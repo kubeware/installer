@@ -3,9 +3,9 @@ entries:
   appcatalog:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-07T18:44:50.152303-07:00"
+    created: "2023-07-08T01:46:23.473855124Z"
     description: A Helm chart for Appcatalog Operator by AppsCode
-    digest: 5c095c50b32148efda91a3e7605411adbf3c47a78919d5482f6ed49e84bf9b07
+    digest: 29dfe2e847966dcc754b2bc940b67c1f4a7a26aaa4707ef8556ab67fd276a2d1
     home: https://github.com/kubeware/appcatalog
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
@@ -21,9 +21,9 @@ entries:
   kube-bind-provider:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-07T18:44:50.159388-07:00"
+    created: "2023-07-08T01:46:23.489205551Z"
     description: A Helm chart for kube-bind provider by AppsCode
-    digest: 030fd96e1f44f16d1c9a291e5d51283056628acc5ba7560b46613bce29db4062
+    digest: af82b65b6f735c8994906aa06b0640f8eb564edf7b6d88296093b793193d2bd2
     home: https://github.com/kubeware/kube-bind-server
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
@@ -39,9 +39,9 @@ entries:
   kube-bind-server:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-07T18:44:50.166285-07:00"
+    created: "2023-07-08T01:46:23.506024891Z"
     description: A Helm chart for kube-bind Server by AppsCode
-    digest: bbe3f2161cc3983eaf739321677e7be4f109f5d1a16b07be6d56c07c3dec456f
+    digest: 976a48b8941e86f588ac565df0401048c753687d8683c40903e59c02425ff163
     home: https://github.com/kubeware/kube-bind-server
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
@@ -54,4 +54,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/kubeware/installer/master/stable/kube-bind-server/kube-bind-server-v2023.03.23.tgz
     version: v2023.03.23
-generated: "2023-07-07T18:44:50.144205-07:00"
+generated: "2023-07-08T01:46:23.458271194Z"
