@@ -1,4 +1,4 @@
-module go.bytebuilders.dev/installer
+module go.kubeware.dev/installer
 
 go 1.18
 
