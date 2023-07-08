@@ -18,12 +18,30 @@ entries:
     urls:
     - https://raw.githubusercontent.com/kubeware/installer/master/stable/appcatalog/appcatalog-v2023.03.23.tgz
     version: v2023.03.23
+  catalog-manager:
+  - apiVersion: v2
+    appVersion: v0.0.1
+    created: "2023-07-08T04:29:45.194226813Z"
+    description: A Helm chart for Appcatalog Operator by AppsCode
+    digest: bfeb553405a755822d73efccffaabcd663f0b5bd7c5938a5246bd7ef4d383763
+    home: https://github.com/kubeware/catalog-manager
+    icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
+    maintainers:
+    - email: support@appscode.com
+      name: appscode
+    name: catalog-manager
+    sources:
+    - https://github.com/kubeware/catalog-manager
+    type: application
+    urls:
+    - https://raw.githubusercontent.com/kubeware/installer/master/stable/catalog-manager/catalog-manager-v2023.03.23.tgz
+    version: v2023.03.23
   kube-bind-provider:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-07T18:48:50.847476-07:00"
+    created: "2023-07-08T04:29:45.208245828Z"
     description: A Helm chart for kube-bind provider by AppsCode
-    digest: d6c6a4aea0d42d56f1a86b74ab3ac5ac97e8918f58403e9d88a06b98e74808bf
+    digest: af82b65b6f735c8994906aa06b0640f8eb564edf7b6d88296093b793193d2bd2
     home: https://github.com/kubeware/kube-bind-server
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
@@ -39,9 +57,9 @@ entries:
   kube-bind-server:
   - apiVersion: v2
     appVersion: v0.0.1
-    created: "2023-07-07T18:48:50.854014-07:00"
+    created: "2023-07-08T04:29:45.221694335Z"
     description: A Helm chart for kube-bind Server by AppsCode
-    digest: a8cfae391ed0a62c3c2102a7fb01897cabdc08154aba32289714aa9a8495d160
+    digest: 976a48b8941e86f588ac565df0401048c753687d8683c40903e59c02425ff163
     home: https://github.com/kubeware/kube-bind-server
     icon: https://cdn.appscode.com/images/products/searchlight/icons/android-icon-192x192.png
     maintainers:
@@ -54,4 +72,4 @@ entries:
     urls:
     - https://raw.githubusercontent.com/kubeware/installer/master/stable/kube-bind-server/kube-bind-server-v2023.03.23.tgz
     version: v2023.03.23
-generated: "2023-07-07T18:48:50.833195-07:00"
+generated: "2023-07-08T04:29:45.178525872Z"
