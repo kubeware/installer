@@ -47,5 +47,10 @@ rules:
   - secretaccessrequests/status
   verbs: ["get", "list", "patch"]
 - apiGroups: [""]
-  resources: ["serviceaccounts"]
+  resources: ["serviceaccounts", "secrets"]
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - catalog.kubedb.com
+  resources:
+  - elasticsearchversions
   verbs: ["get", "list", "watch"]
