@@ -13,7 +13,6 @@ rules:
   - kubedb.com
   resources:
   - elasticsearches
-  - elasticsearchversions
   - kafkas
   - mariadbs
   - memcacheds
@@ -52,7 +51,7 @@ rules:
   verbs: ["get", "list", "watch"]
 - apiGroups: [ "" ]
   resources: [ "secrets" ]
-  verbs: [ "*" ]
+  verbs: [ "get","list","watch" ]
 - apiGroups:
   - catalog.kubedb.com
   resources:
