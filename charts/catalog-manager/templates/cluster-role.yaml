@@ -54,3 +54,16 @@ rules:
   resources:
   - elasticsearchversions
   verbs: ["get", "list", "watch"]
+- apiGroups: ["gateway.networking.k8s.io"]
+  resources:
+  - gateways
+  - httproutes
+  - referencegrants
+  - tcproutes
+  verbs: ["get","list","watch","create","patch","delete"]
+- apiGroups: ["gateway.voyagermesh.com"]
+  resources:
+  - mysqlroutes
+  - mongodbroutes
+  - redisroutes
+  verbs: ["get","list","watch","create","patch","delete"]
