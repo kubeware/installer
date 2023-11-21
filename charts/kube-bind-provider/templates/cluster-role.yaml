@@ -17,3 +17,63 @@ rules:
   - kubevault.com
   resources: ["*"]
   verbs: ["get", "list", "watch"]
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+    - "clusterroles"
+    - "clusterrolebindings"
+    - "roles"
+    - "rolebindings"
+  verbs: ["get", "list", "watch", "create", "delete"]
+- apiGroups:
+  - ""
+  resources:
+    - "namespaces"
+    - "serviceaccounts"
+  verbs: ["get", "list", "watch", "create"]
+- apiGroups:
+  - "apiextensions.k8s.io"
+  resources:
+    - "customresourcedefinitions"
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - "kube-bind.io"
+  resources:
+  - "apiserviceexportrequests"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - ""
+  resources:
+    - "secrets"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "clusterbindings"
+  verbs: ["get", "watch", "list", "create"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "clusterbindings/status"
+  verbs: ["get","patch","update"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiserviceexports"
+  verbs: ["get", "watch", "list", "create"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiserviceexports/status"
+  verbs: ["get","patch","update"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiservicenamespaces"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiservicenamespaces"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+

@@ -89,12 +89,6 @@ type OIDC struct {
 	CallbackURL  string `json:"callbackURL"`
 }
 
-type External struct {
-	Address    string `json:"address"`
-	ServerName string `json:"serverName"`
-	CAFile     string `json:"CAFile"`
-}
-
 type Cookie struct {
 	SigningKey    string `json:"signingKey"`
 	EncryptionKey string `json:"encryptionKey"`

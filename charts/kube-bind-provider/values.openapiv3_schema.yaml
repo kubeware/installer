@@ -558,6 +558,33 @@ properties:
             type: string
         type: object
     type: object
+  provider:
+    properties:
+      consumerScope:
+        type: string
+      external:
+        properties:
+          CAFile:
+            type: string
+          address:
+            type: string
+          serverName:
+            type: string
+        required:
+        - CAFile
+        - address
+        - serverName
+        type: object
+      namespacePrefix:
+        type: string
+      providerPrettyName:
+        type: string
+    required:
+    - consumerScope
+    - external
+    - namespacePrefix
+    - providerPrettyName
+    type: object
   registryFQDN:
     type: string
   replicaCount:
@@ -595,6 +622,7 @@ required:
 - image
 - imagePullPolicy
 - monitoring
+- provider
 - registryFQDN
 - replicaCount
 - serviceAccount
