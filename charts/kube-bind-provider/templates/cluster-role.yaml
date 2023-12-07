@@ -24,7 +24,7 @@ rules:
     - "clusterrolebindings"
     - "roles"
     - "rolebindings"
-  verbs: ["get", "list", "watch", "create", "delete"]
+  verbs: ["get","update", "list", "watch", "create", "delete"]
 - apiGroups:
   - ""
   resources:
@@ -41,6 +41,11 @@ rules:
   resources:
   - "apiserviceexportrequests"
   verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiserviceexportrequests/status"
+  verbs: ["patch","update","get"]
 - apiGroups:
     - ""
   resources:
