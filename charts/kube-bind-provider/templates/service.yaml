@@ -16,7 +16,7 @@ spec:
   ports:
   # Port used to expose admission webhook apiserver
   - name: api
-    port: 443
-    targetPort: 8443
+    port: 80
+    targetPort: 8081
   selector:
     {{- include "kube-bind-provider.selectorLabels" . | nindent 4 }}

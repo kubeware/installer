@@ -21,16 +21,14 @@ image:
   tag: ""
   # Compute Resources required by the operator container
   resources: {}
-  # Security options this container should run with
-  securityContext: # +doc-gen:break
-    allowPrivilegeEscalation: false
-    capabilities:
-      drop: ["ALL"]
-    readOnlyRootFilesystem: true
-    runAsNonRoot: true
-    runAsUser: 65534
-    seccompProfile:
-      type: RuntimeDefault
+  # Security options the operator container should run with
+  securityContext: {}
+  # capabilities:
+  #   drop:
+  #   - ALL
+  # readOnlyRootFilesystem: true
+  # runAsNonRoot: true
+  # runAsUser: 1000
 
 # Specify an array of imagePullSecrets.
 # Secrets must be manually created in the namespace.
@@ -55,7 +53,7 @@ serviceAccount:
 podAnnotations: {}
 
 podSecurityContext: {}
-  # fsGroup: 2000
+# fsGroup: 2000
 
 nodeSelector: {}
 
@@ -71,3 +69,21 @@ monitoring:
     # Prometheus crd will select ServiceMonitor using these labels.
     # Only usable when monitoring agent is `prometheus.io/operator`.
     labels: {}
+
+
+provider:
+  # the sync namespace created in the provider side will be named like bb-<some-hash>
+  namespacePrefix: "bb-"
+  # the name of the provider
+  providerPrettyName: "Appscode"
+  # How consumers access the service provider cluster. In Kubernetes, "namespaced" allows namespace isolation.
+  # In kcp, "cluster" allows workspace isolation, and with that allows cluster-scoped resources to bind, and it is generally more performant.
+  consumerScope: "Namespaced"
+
+  external:
+    # The external address for the service provider cluster, including https:// and port. If not specified, service account's hosts are used.
+    address: ""
+    # The external (TLS) server name used by consumers to talk to the service provider cluster. This can be useful to select the right certificate via SNI.
+    serverName: ""
+    # The external CA file for the service provider cluster. If not specified, service account's CA is used.
+    CAFile: ""

@@ -70,6 +70,20 @@ type KubeBindProviderSpec struct {
 	// +optional
 	Affinity   *core.Affinity `json:"affinity"`
 	Monitoring Monitoring     `json:"monitoring"`
+	Provider   ProviderConfig `json:"provider"`
+}
+
+type ProviderConfig struct {
+	NamespacePrefix    string   `json:"namespacePrefix"`
+	ProviderPrettyName string   `json:"providerPrettyName"`
+	ConsumerScope      string   `json:"consumerScope"`
+	External           External `json:"external"`
+}
+
+type External struct {
+	Address    string `json:"address"`
+	ServerName string `json:"serverName"`
+	CAFile     string `json:"CAFile"`
 }
 
 // +k8s:deepcopy-gen:interfaces=k8s.io/apimachinery/pkg/runtime.Object

@@ -27,25 +27,27 @@ spec:
         - name: {{ .Chart.Name }}
           securityContext:
             {{- toYaml .Values.image.securityContext | nindent 12 }}
-          image: {{ include "image.registry" . }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}
+{{/*          image: {{ include "image.registry" . }}/{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}*/}}
+          image: superm4n/kube-bind-server:config_linux_amd64
           imagePullPolicy: {{ .Values.imagePullPolicy }}
           args:
-            - run
+            - provider
+            - --namespace-prefix={{ .Values.provider.namespacePrefix }}
+            - --pretty-name={{ .Values.provider.providerPrettyName }}
+            - --consumer-scope={{ .Values.provider.consumerScope }}
+            - --external-address={{ .Values.provider.external.address }}
+            - --external-ca-file={{ .Values.provider.external.CAFile }}
+            - --external-server-name={{ .Values.provider.external.serverName }}
+{{/*            - --subject=*/}}
+{{/*            - --cluster-id=*/}}
+{{/*            - --group=*/}}
+{{/*            - --resource=*/}}
+{{/*            - --kubeconfig="/.kube/config"*/}}
+{{/*            - --namespace=*/}}
           ports:
-            - name: metrics
-              containerPort: 8080
-              protocol: TCP
             - name: http
               containerPort: 8081
               protocol: TCP
-          livenessProbe:
-            httpGet:
-              path: /healthz
-              port: http
-          readinessProbe:
-            httpGet:
-              path: /readyz
-              port: http
           resources:
             {{- toYaml .Values.image.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
