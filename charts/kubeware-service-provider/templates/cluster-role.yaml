@@ -1,0 +1,84 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: {{ include "kubeware-service-provider.fullname" . }}
+  labels:
+    {{- include "kubeware-service-provider.labels" . | nindent 4 }}
+rules:
+- apiGroups:
+  - kubeware-service-provider.appscode.com
+  resources: ["*"]
+  verbs: ["*"]
+- apiGroups:
+  - kubedb.com
+  resources: ["*"]
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - kubevault.com
+  resources: ["*"]
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - rbac.authorization.k8s.io
+  resources:
+    - "clusterroles"
+    - "clusterrolebindings"
+    - "roles"
+    - "rolebindings"
+  verbs: ["get","update", "list", "watch", "create", "delete"]
+- apiGroups:
+  - ""
+  resources:
+    - "namespaces"
+    - "serviceaccounts"
+  verbs: ["get", "list", "watch", "create"]
+- apiGroups:
+  - "apiextensions.k8s.io"
+  resources:
+    - "customresourcedefinitions"
+  verbs: ["get", "list", "watch"]
+- apiGroups:
+  - "kube-bind.io"
+  resources:
+  - "apiserviceexportrequests"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiserviceexportrequests/status"
+  verbs: ["patch","update","get"]
+- apiGroups:
+    - ""
+  resources:
+    - "secrets"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "clusterbindings"
+  verbs: ["get", "watch", "list", "create"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "clusterbindings/status"
+  verbs: ["get","patch","update"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiserviceexports"
+  verbs: ["get", "watch", "list", "create"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiserviceexports/status"
+  verbs: ["get","patch","update"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiservicenamespaces"
+  verbs: ["create","delete","patch","update","get","list","watch"]
+- apiGroups:
+    - "kube-bind.io"
+  resources:
+    - "apiservicenamespaces/status"
+  verbs: ["patch","update","get"]
+

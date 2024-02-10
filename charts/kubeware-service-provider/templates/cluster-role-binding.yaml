@@ -1,0 +1,14 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: {{ include "kubeware-service-provider.fullname" . }}
+  labels:
+    {{- include "kubeware-service-provider.labels" . | nindent 4 }}
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: {{ include "kubeware-service-provider.fullname" . }}
+subjects:
+- kind: ServiceAccount
+  name: {{ include "kubeware-service-provider.serviceAccountName" . }}
+  namespace: {{ .Release.Namespace }}
