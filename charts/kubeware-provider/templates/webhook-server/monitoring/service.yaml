@@ -2,7 +2,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{ include "kubeware-provider.webhookServiceName" . }}
+  name: {{ include "kubeware-provider.fullname" . }}
   namespace: {{ .Release.Namespace }}
   labels:
     {{- include "kubeware-provider.labels" . | nindent 4 }}
@@ -16,12 +16,11 @@ metadata:
     {{- end }}
   {{- end }}
 spec:
-  selector:
-    app.kubernetes.io/component: webhook-server
-    {{- include "kubeware-provider.selectorLabels" . | nindent 4 }}
   ports:
   - name: https
-    port: 443
+    port: 8443
     protocol: TCP
-    targetPort: 9443
+    targetPort: https
+  selector:
+    {{- include "kubeware-provider.selectorLabels" . | nindent 4 }}
 {{ end }}
