@@ -16,7 +16,7 @@ image:
   # Docker registry used to pull operator image
   registry: appscode
   # Name of operator container image
-  repository: kubeware-server
+  repository: kubeware-service-provider
   # Overrides the image tag whose default is the chart appVersion.
   tag: ""
   # Compute Resources required by the operator container

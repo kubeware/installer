@@ -29,3 +29,11 @@ crd-importer \
     --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.appscode.com_proxysqlbindings.yaml \
     --input=https://github.com/kubeware/catalog/raw/${KUBEWARE_CATALOG_TAG}/config/crd/bases/catalog.appscode.com_redisbindings.yaml \
     --out=./charts/catalog-manager/crds
+
+crd-importer \
+    --input=https://github.com/kubeware/kubeware/raw/master/deploy/crd/kubeware.dev_apiservicebindings.yaml \
+    --input=https://github.com/kubeware/kubeware/raw/master/deploy/crd/kubeware.dev_apiserviceexportrequests.yaml \
+    --input=https://github.com/kubeware/kubeware/raw/master/deploy/crd/kubeware.dev_apiserviceexports.yaml \
+    --input=https://github.com/kubeware/kubeware/raw/master/deploy/crd/kubeware.dev_apiservicenamespaces.yaml \
+    --input=https://github.com/kubeware/kubeware/raw/master/deploy/crd/kubeware.dev_clusterbindings.yaml \
+    --out=./charts/kubeware-provider/crds

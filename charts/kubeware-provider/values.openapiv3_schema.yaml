@@ -404,9 +404,94 @@ properties:
             type: array
         type: object
     type: object
+  annotations:
+    additionalProperties:
+      type: string
+    type: object
+  apiserver:
+    properties:
+      bypassValidatingWebhookXray:
+        type: boolean
+      ca:
+        type: string
+      enableMutatingWebhook:
+        type: boolean
+      enableValidatingWebhook:
+        type: boolean
+      groupPriorityMinimum:
+        type: integer
+      healthcheck:
+        properties:
+          enabled:
+            type: boolean
+        type: object
+      servingCerts:
+        properties:
+          caCrt:
+            type: string
+          generate:
+            type: boolean
+          serverCrt:
+            type: string
+          serverKey:
+            type: string
+        required:
+        - generate
+        type: object
+      useKubeapiserverFqdnForAks:
+        type: boolean
+      versionPriority:
+        type: integer
+    required:
+    - bypassValidatingWebhookXray
+    - ca
+    - enableMutatingWebhook
+    - enableValidatingWebhook
+    - groupPriorityMinimum
+    - healthcheck
+    - servingCerts
+    - useKubeapiserverFqdnForAks
+    - versionPriority
+    type: object
+  criticalAddon:
+    type: boolean
   fullnameOverride:
     type: string
-  image:
+  imagePullPolicy:
+    type: string
+  imagePullSecrets:
+    items:
+      type: string
+    type: array
+  logLevel:
+    format: int32
+    type: integer
+  monitoring:
+    properties:
+      agent:
+        enum:
+        - prometheus.io
+        - prometheus.io/operator
+        - prometheus.io/builtin
+        type: string
+      serviceMonitor:
+        properties:
+          labels:
+            additionalProperties:
+              type: string
+            type: object
+        type: object
+    required:
+    - agent
+    - serviceMonitor
+    type: object
+  nameOverride:
+    type: string
+  nodeSelector:
+    additionalProperties:
+      type: string
+    type: object
+  operator:
     properties:
       registry:
         type: string
@@ -511,38 +596,11 @@ properties:
     - repository
     - tag
     type: object
-  imagePullPolicy:
-    type: string
-  imagePullSecrets:
-    items:
-      type: string
-    type: array
-  monitoring:
-    properties:
-      agent:
-        enum:
-        - prometheus.io
-        - prometheus.io/operator
-        - prometheus.io/builtin
-        type: string
-      serviceMonitor:
-        properties:
-          labels:
-            additionalProperties:
-              type: string
-            type: object
-        type: object
-    required:
-    - agent
-    - serviceMonitor
-    type: object
-  nameOverride:
-    type: string
-  nodeSelector:
+  podAnnotations:
     additionalProperties:
       type: string
     type: object
-  podAnnotations:
+  podLabels:
     additionalProperties:
       type: string
     type: object
@@ -637,9 +695,115 @@ properties:
     - namespacePrefix
     - providerPrettyName
     type: object
+  rbacproxy:
+    properties:
+      registry:
+        type: string
+      repository:
+        type: string
+      resources:
+        properties:
+          claims:
+            items:
+              properties:
+                name:
+                  type: string
+              required:
+              - name
+              type: object
+            type: array
+            x-kubernetes-list-map-keys:
+            - name
+            x-kubernetes-list-type: map
+          limits:
+            additionalProperties:
+              anyOf:
+              - type: integer
+              - type: string
+              pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+              x-kubernetes-int-or-string: true
+            type: object
+          requests:
+            additionalProperties:
+              anyOf:
+              - type: integer
+              - type: string
+              pattern: ^(\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))(([KMGTPE]i)|[numkMGTPE]|([eE](\+|-)?(([0-9]+(\.[0-9]*)?)|(\.[0-9]+))))?$
+              x-kubernetes-int-or-string: true
+            type: object
+        type: object
+      securityContext:
+        properties:
+          allowPrivilegeEscalation:
+            type: boolean
+          capabilities:
+            properties:
+              add:
+                items:
+                  type: string
+                type: array
+              drop:
+                items:
+                  type: string
+                type: array
+            type: object
+          privileged:
+            type: boolean
+          procMount:
+            type: string
+          readOnlyRootFilesystem:
+            type: boolean
+          runAsGroup:
+            format: int64
+            type: integer
+          runAsNonRoot:
+            type: boolean
+          runAsUser:
+            format: int64
+            type: integer
+          seLinuxOptions:
+            properties:
+              level:
+                type: string
+              role:
+                type: string
+              type:
+                type: string
+              user:
+                type: string
+            type: object
+          seccompProfile:
+            properties:
+              localhostProfile:
+                type: string
+              type:
+                type: string
+            required:
+            - type
+            type: object
+          windowsOptions:
+            properties:
+              gmsaCredentialSpec:
+                type: string
+              gmsaCredentialSpecName:
+                type: string
+              hostProcess:
+                type: boolean
+              runAsUserName:
+                type: string
+            type: object
+        type: object
+      tag:
+        type: string
+    required:
+    - registry
+    - repository
+    - tag
+    type: object
   registryFQDN:
     type: string
   replicaCount:
+    format: int32
     type: integer
   serviceAccount:
     properties:
@@ -671,10 +835,11 @@ properties:
       type: object
     type: array
 required:
-- image
 - imagePullPolicy
 - monitoring
+- operator
 - provider
+- rbacproxy
 - registryFQDN
 - replicaCount
 - serviceAccount

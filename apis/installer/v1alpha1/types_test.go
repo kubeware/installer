@@ -28,8 +28,8 @@ import (
 func TestDefaultValues(t *testing.T) {
 	checker := sc.New(os.DirFS("../../.."),
 		sc.TestCase{Obj: v1alpha1.CatalogManagerSpec{}},
+		sc.TestCase{Obj: v1alpha1.KubewareProviderSpec{}},
 		sc.TestCase{Obj: v1alpha1.KubewareServerSpec{}},
-		sc.TestCase{Obj: v1alpha1.KubewareServiceProviderSpec{}},
 	)
 	checker.TestAll(t)
 }
