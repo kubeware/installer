@@ -1,3 +1,5 @@
+{{- if or .Values.apiserver.enableMutatingWebhook .Values.apiserver.enableValidatingWebhook }}
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -16,6 +18,7 @@ rules:
     verbs:
       - create
 ---
+
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:
@@ -28,3 +31,5 @@ subjects:
   - kind: ServiceAccount
     name: {{ include "kubeware-provider.serviceAccountName" . }}
     namespace: {{ .Release.Namespace }}
+
+{{ end }}
