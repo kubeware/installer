@@ -56,10 +56,10 @@ func addKnownTypes(scheme *runtime.Scheme) error {
 	scheme.AddKnownTypes(SchemeGroupVersion,
 		&CatalogManager{},
 		&CatalogManagerList{},
-		&KubewareProvider{},
-		&KubewareProviderList{},
-		&KubewareServer{},
-		&KubewareServerList{},
+		&ServiceProvider{},
+		&ServiceProviderList{},
+		&ServiceBackend{},
+		&ServiceBackendList{},
 	)
 
 	scheme.AddKnownTypes(SchemeGroupVersion,
