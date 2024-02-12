@@ -1,9 +1,9 @@
 project:
-  name: kube-bind Server by AppsCode
-  shortName: kube-bind Server
+  name: Kubeware Backend Server by AppsCode
+  shortName: Kubeware Backend Server
   url: https://github.com/kubeware/kubeware-server
-  description: kube-bind Server for Kubernetes
-  app: a kube-bind Server
+  description: Kubeware Backend Server for Kubernetes
+  app: a Kubeware Backend Server
 repository:
   url: https://charts.appscode.com/stable/
   name: appscode

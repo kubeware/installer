@@ -1,19 +1,19 @@
-# PetSet Operator
+# Kubeware Service Provider
 
-[PetSet Operator by AppsCode](https://github.com/kubeops/kubeware-provider) - PetSet Operator by AppsCode
+[Kubeware Service Provider by AppsCode](https://github.com/kubeware) - Kubeware Service Provider by AppsCode
 
 ## TL;DR;
 
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/kubeware-provider --version=v0.0.1
-$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v0.0.1
+$ helm search repo appscode/kubeware-provider --version=v2024.2.11
+$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v2024.2.11
 ```
 
 ## Introduction
 
-This chart deploys PetSet operator on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart deploys a Kubeware Service Provider on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -24,10 +24,10 @@ This chart deploys PetSet operator on a [Kubernetes](http://kubernetes.io) clust
 To install/upgrade the chart with the release name `kubeware-provider`:
 
 ```bash
-$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v0.0.1
+$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v2024.2.11
 ```
 
-The command deploys PetSet operator on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+The command deploys a Kubeware Service Provider on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
@@ -52,7 +52,7 @@ The following table lists the configurable parameters of the `kubeware-provider`
 | replicaCount                          | Number of stash operator replicas to create (only 1 is supported)                                                                                                                                                                                    | <code>1</code>                                                                                                                                      |
 | registryFQDN                          | Docker registry fqdn used to pull Stash related images. Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                               | <code>ghcr.io</code>                                                                                                                                |
 | operator.registry                     | Docker registry used to pull operator image                                                                                                                                                                                                          | <code>appscode</code>                                                                                                                               |
-| operator.repository                   | Name of operator container image                                                                                                                                                                                                                     | <code>kubeware-provider</code>                                                                                                                      |
+| operator.repository                   | Name of operator container image                                                                                                                                                                                                                     | <code>kubeware-service-provider</code>                                                                                                              |
 | operator.tag                          | Operator container image tag                                                                                                                                                                                                                         | <code>""</code>                                                                                                                                     |
 | operator.resources                    | Compute Resources required by the operator container                                                                                                                                                                                                 | <code>{"requests":{"cpu":"100m"}}</code>                                                                                                            |
 | operator.securityContext              | Security options this container should run with                                                                                                                                                                                                      | <code>{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":65534}</code> |
@@ -100,12 +100,12 @@ The following table lists the configurable parameters of the `kubeware-provider`
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v0.0.1 --set replicaCount=1
+$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v2024.2.11 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v0.0.1 --values values.yaml
+$ helm upgrade -i kubeware-provider appscode/kubeware-provider -n kubeops --create-namespace --version=v2024.2.11 --values values.yaml
 ```

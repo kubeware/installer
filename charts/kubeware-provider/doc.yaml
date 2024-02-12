@@ -1,9 +1,9 @@
 project:
-  name: PetSet Operator by AppsCode
-  shortName: PetSet Operator
-  url: https://github.com/kubeops/kubeware-provider
-  description: PetSet Operator by AppsCode
-  app: PetSet operator
+  name: Kubeware Service Provider by AppsCode
+  shortName: Kubeware Service Provider
+  url: https://github.com/kubeware
+  description: Kubeware Service Provider by AppsCode
+  app: a Kubeware Service Provider
 repository:
   url: https://charts.appscode.com/stable/
   name: appscode

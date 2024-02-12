@@ -1,19 +1,19 @@
-# kube-bind Server
+# Kubeware Backend Server
 
-[kube-bind Server by AppsCode](https://github.com/kubeware/kubeware-server) - kube-bind Server for Kubernetes
+[Kubeware Backend Server by AppsCode](https://github.com/kubeware/kubeware-server) - Kubeware Backend Server for Kubernetes
 
 ## TL;DR;
 
 ```bash
 $ helm repo add appscode https://charts.appscode.com/stable/
 $ helm repo update
-$ helm search repo appscode/kubeware-server --version=v2023.03.23
-$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2023.03.23
+$ helm search repo appscode/kubeware-server --version=v2024.2.11
+$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2024.2.11
 ```
 
 ## Introduction
 
-This chart deploys a kube-bind Server on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
+This chart deploys a Kubeware Backend Server on a [Kubernetes](http://kubernetes.io) cluster using the [Helm](https://helm.sh) package manager.
 
 ## Prerequisites
 
@@ -24,10 +24,10 @@ This chart deploys a kube-bind Server on a [Kubernetes](http://kubernetes.io) cl
 To install/upgrade the chart with the release name `kubeware-server`:
 
 ```bash
-$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2023.03.23
+$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2024.2.11
 ```
 
-The command deploys a kube-bind Server on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
+The command deploys a Kubeware Backend Server on the Kubernetes cluster in the default configuration. The [configuration](#configuration) section lists the parameters that can be configured during installation.
 
 > **Tip**: List all releases using `helm list`
 
@@ -52,7 +52,7 @@ The following table lists the configurable parameters of the `kubeware-server` c
 | replicaCount                     |                                                                                                                                                                                                                                                      | <code>1</code>                                                                                                                                                                                 |
 | registryFQDN                     | Docker registry fqdn used to pull docker images Set this to use docker registry hosted at ${registryFQDN}/${registry}/${image}                                                                                                                       | <code>ghcr.io</code>                                                                                                                                                                           |
 | image.registry                   | Docker registry used to pull operator image                                                                                                                                                                                                          | <code>appscode</code>                                                                                                                                                                          |
-| image.repository                 | Name of operator container image                                                                                                                                                                                                                     | <code>kubeware-server</code>                                                                                                                                                                   |
+| image.repository                 | Name of operator container image                                                                                                                                                                                                                     | <code>kubeware-service-provider</code>                                                                                                                                                         |
 | image.tag                        | Overrides the image tag whose default is the chart appVersion.                                                                                                                                                                                       | <code>""</code>                                                                                                                                                                                |
 | image.resources                  | Compute Resources required by the operator container                                                                                                                                                                                                 | <code>{}</code>                                                                                                                                                                                |
 | image.securityContext            | Security options this container should run with                                                                                                                                                                                                      | <code>{"allowPrivilegeEscalation":false,"capabilities":{"drop":["ALL"]},"readOnlyRootFilesystem":true,"runAsNonRoot":true,"runAsUser":65534,"seccompProfile":{"type":"RuntimeDefault"}}</code> |
@@ -82,12 +82,12 @@ The following table lists the configurable parameters of the `kubeware-server` c
 Specify each parameter using the `--set key=value[,key=value]` argument to `helm upgrade -i`. For example:
 
 ```bash
-$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2023.03.23 --set replicaCount=1
+$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2024.2.11 --set replicaCount=1
 ```
 
 Alternatively, a YAML file that specifies the values for the parameters can be provided while
 installing the chart. For example:
 
 ```bash
-$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2023.03.23 --values values.yaml
+$ helm upgrade -i kubeware-server appscode/kubeware-server -n kubeops --create-namespace --version=v2024.2.11 --values values.yaml
 ```
